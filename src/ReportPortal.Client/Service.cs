@@ -73,6 +73,8 @@ namespace ReportPortal.Client
             User = new ServiceUserResource(_httpClient, BaseUri, ProjectName);
             UserFilter = new ServiceUserFilterResource(_httpClient, BaseUri, ProjectName);
             Project = new ServiceProjectResource(_httpClient, BaseUri, ProjectName);
+
+            Converters.ModelSerializerAssemblyResolver.Init();
         }
 
         /// <summary>

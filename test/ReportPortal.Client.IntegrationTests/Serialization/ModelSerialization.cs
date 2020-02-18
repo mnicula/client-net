@@ -8,6 +8,11 @@ namespace ReportPortal.Client.IntegrationTests.Serialization
 {
     public class ModelSerialization
     {
+        public ModelSerialization()
+        {
+            ModelSerializerAssemblyResolver.Init();
+        }
+
         [Fact]
         public void ShouldThrowExceptionIfIncorrectJson()
         {
@@ -18,11 +23,21 @@ namespace ReportPortal.Client.IntegrationTests.Serialization
         }
 
         [Fact]
+        public void AAA()
+        {
+            //Newtonsoft.Json.
+        }
+
+        [Fact]
         public void ShouldDeserializeWithEscapedNewLine()
         {
-            var json = "{\"P1\": \"abc\\nabc\"}";
-            var a = ModelSerializer.Deserialize<A>(json);
-            Assert.Equal("abc\nabc", a.P1);
+            for (int i = 0; i < 5000; i++)
+            {
+                var json = "{\"P1\": \"abc\\nabc\"}";
+                var a = ModelSerializer.Deserialize<A>(json);
+
+                Assert.Equal("abc\nabc", a.P1);
+            }
         }
 
         [DataContract]

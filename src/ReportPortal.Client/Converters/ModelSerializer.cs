@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -12,6 +13,8 @@ namespace ReportPortal.Client.Converters
     {
         public static T Deserialize<T>(string json)
         {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
+
             DataContractJsonSerializerSettings settings = new DataContractJsonSerializerSettings
             {
                 UseSimpleDictionaryFormat = true
