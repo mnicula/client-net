@@ -18,7 +18,7 @@ namespace ReportPortal.Client.Resources
             return PostAsJsonAsync<UserFilterCreatedResponse, CreateUserFilterRequest>($"{ProjectName}/filter", request);
         }
 
-        public  Task<Content<UserFilterResponse>> GetAsync(FilterOption filterOption = null)
+        public Task<Content<UserFilterResponse>> GetAsync(FilterOption filterOption = null)
         {
             var uri = $"{ProjectName}/filter";
             if (filterOption != null)
@@ -27,6 +27,11 @@ namespace ReportPortal.Client.Resources
             }
 
             return GetAsJsonAsync<Content<UserFilterResponse>>(uri);
+        }
+
+        public Task<MessageResponse> UpdateAsync(long id, UpdateUserFilterRequest request)
+        {
+            return PutAsJsonAsync<MessageResponse, UpdateUserFilterRequest>($"{ProjectName}/filter/{id}", request);
         }
 
         public Task<UserFilterResponse> GetAsync(long id)
